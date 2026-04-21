@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Contracts/Contracts.csproj" />
+  <Project Path="LocalApp/LocalApp.csproj" Id="a755e657-efa2-49f1-8c74-366c2ee27789" />
+  <Project Path="Server/Server.csproj" />
+</Solution>
