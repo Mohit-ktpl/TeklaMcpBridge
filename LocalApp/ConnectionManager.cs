@@ -14,7 +14,7 @@ namespace LocalApp
     {
         private HubConnection _connection;
         private readonly CommandRouter _router;
-        private readonly string _hubUrl = "https://localhost:7268/teklahub"; // Replace with AWS URL
+        private readonly string _hubUrl = "https://teklamcpbridge.onrender.com/teklahub"; // Replace with AWS URL
 
         public ConnectionManager(CommandRouter router)
         {
@@ -73,7 +73,7 @@ namespace LocalApp
             try
             {
                 await _connection.StartAsync();
-                Console.WriteLine("SignalR Bridge Connected to AWS.");
+                Console.WriteLine("Connected to SignalR hub.");
             }
             catch (Exception ex)
             {

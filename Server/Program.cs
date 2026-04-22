@@ -19,6 +19,8 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddSignalR().AddNewtonsoftJsonProtocol();
+// Allows your MCP Tools to inspect who is calling them
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
