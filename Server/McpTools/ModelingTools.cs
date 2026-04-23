@@ -24,7 +24,7 @@ namespace Server.McpTools
             var context = _httpContextAccessor.HttpContext;
 
             // 2. Extract the userId from the query string
-            string userId = context?.Request.Query["userId"].ToString();
+            string? userId = context?.Request.Query["userId"].ToString();
 
             // 3. Fail gracefully if the ID is missing
             if (string.IsNullOrEmpty(userId))
@@ -39,5 +39,10 @@ namespace Server.McpTools
                 ? $"Success! Beam ID: {result.CreatedObjectGuid}"
                 : $"Failed: {result.Message}";
         }
+        //[McpServerTool, Description( "Tests if the bridge is stable")]
+        //public async Task<string> TestConnection()
+        //{
+        //    return "The bridge is stable!";
+        //}
     }
 }

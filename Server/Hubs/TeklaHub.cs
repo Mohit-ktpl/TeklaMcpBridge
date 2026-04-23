@@ -27,7 +27,7 @@ namespace Server.Hubs
             return base.OnConnectedAsync();
         }
 
-        public override Task OnDisconnectedAsync(Exception exception)
+        public override Task OnDisconnectedAsync(Exception? exception)
         {
             _tracker.Remove(Context.ConnectionId);
             return base.OnDisconnectedAsync(exception);
