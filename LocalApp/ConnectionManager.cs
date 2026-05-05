@@ -14,7 +14,7 @@ namespace LocalApp
     {
         private HubConnection _connection;
         private readonly CommandRouter _router;
-        private readonly string _hubUrl = "https://teklamcpbridge.onrender.com/teklahub"; // Replace with AWS URL
+        private readonly string _hubUrl = "http://test-alb-02-mcpserver-216753763.ap-south-1.elb.amazonaws.com/teklahub"; // Replace with AWS URL
 
         public ConnectionManager(CommandRouter router)
         {

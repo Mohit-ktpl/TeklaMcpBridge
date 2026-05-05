@@ -46,17 +46,20 @@ namespace LocalApp.Core
         public Task<T> InvokeAsync<T>(Func<T> func)
         {
             var tcs = new TaskCompletionSource<T>();
+            Console.WriteLine($"[Dispatcher] Received request of type {typeof(T).Name}");
 
             _executionQueue.Add(() =>
             {
                 try
                 {
                     // Run the function and send the result back to the Task
+                    Console.WriteLine("[Dispatcher] Executing on STA thread...");
                     T result = func();
                     tcs.SetResult(result);
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine($"[Dispatcher] Execution Error: {ex}");
                     tcs.SetException(ex);
                 }
             });

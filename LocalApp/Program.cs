@@ -10,7 +10,7 @@ namespace LocalApp
 {
     internal class Program
     {
-        // This holds all your registered tools and services
+        // This holds all the registered tools and services
         public static IServiceProvider ServiceProvider { get; private set; }
         [STAThread]
         static void Main(string[] args)

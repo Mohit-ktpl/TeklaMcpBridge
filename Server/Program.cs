@@ -21,6 +21,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddSignalR().AddNewtonsoftJsonProtocol();
 // Allows your MCP Tools to inspect who is calling them
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
@@ -33,7 +34,7 @@ if (app.Environment.IsDevelopment())
 //app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+app.UseHealthChecks("/");
 app.MapControllers();
 app.MapHub<TeklaHub>("/teklahub");
 app.MapMcp("/mcp");

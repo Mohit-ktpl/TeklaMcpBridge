@@ -222,6 +222,9 @@
     <Compile Include="Core\TeklaDispatcher.cs" />
     <Compile Include="Core\TeklaToolAttribute.cs" />
     <Compile Include="Handlers\CreateBeamHandler.cs" />
+    <Compile Include="Handlers\DeleteRandomBeam.cs" />
+    <Compile Include="Handlers\GetAllBeamsSummary.cs" />
+    <Compile Include="Handlers\UpdateBeamProfile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

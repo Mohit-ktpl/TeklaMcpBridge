@@ -39,10 +39,64 @@ namespace Server.McpTools
                 ? $"Success! Beam ID: {result.CreatedObjectGuid}"
                 : $"Failed: {result.Message}";
         }
-        //[McpServerTool, Description( "Tests if the bridge is stable")]
-        //public async Task<string> TestConnection()
-        //{
-        //    return "The bridge is stable!";
-        //}
+
+        [McpServerTool, Description("Creates a beam in Tekla")]
+        public async Task<string> CreateSimpleBeam()
+        {
+
+            var context = _httpContextAccessor.HttpContext;
+            string? userId = context?.Request.Query["userId"].ToString();
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return "Failed: Unauthorized. No userId was provided by the client.";
+            }
+
+            var result = await _modelingService.CreateSimpleBeamAsync(userId);
+
+            return result.Success
+                ? $"Success! Beam ID: {result.CreatedObjectGuid}"
+                : $"Failed: {result.Message}";
+        }
+
+        [McpServerTool, Description("Delete a beam in Tekla")]
+        public async Task<string> DeleteBeam()
+        {
+
+            var context = _httpContextAccessor.HttpContext;
+            string? userId = context?.Request.Query["userId"].ToString();
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return "Failed: Unauthorized. No userId was provided by the client.";
+            }
+
+            var result = await _modelingService.DeleteBeamAsync(userId);
+
+            return result.Success
+                ? $"Success! {result.Message}"
+                : $"Failed: {result.Message}";
+        }
+        [McpServerTool, Description("Finds all beams with a specific profile and updates their Class attribute.")]
+        public async Task<string> UpdateBeamClassByProfile(
+            [Description("The profile string to filter for, e.g., 'ISMB300'")] string profileName,
+            [Description("The new class number to assign, e.g., 5")] int newClass)
+        {
+
+            var context = _httpContextAccessor.HttpContext;
+            string? userId = context?.Request.Query["userId"].ToString();
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return "Failed: Unauthorized. No userId was provided by the client.";
+            }
+
+            var result = await _modelingService.UpdateBeamClassByProfileAsync(userId, profileName, newClass);
+
+            return result.Success
+                ? $"Success! {result.Message}"
+                : $"Failed: {result.Message}";
+        }
+
     }
 }
